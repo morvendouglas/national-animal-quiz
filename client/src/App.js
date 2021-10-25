@@ -19,13 +19,12 @@ const App = () => {
     const countryItems = countries.map((country) => {
         const ios = country.alpha2Code
         const area = country.area
-        return { country: ios, value: area }
+        return { country: ios, value: "" }
     })
 
     const [capitals, setCapitals] = useState([
 
         { capital: 'the Beaver', iso: 'CA' },
-        { capital: 'Rio de Janerio', iso: 'BR' },
         { capital: 'the Snow Monkey', iso: 'JP' },
         { capital: 'the Gallic Rooster', iso: 'FR' },
         { capital: ' the Golden Eagle', iso: 'MX' },
@@ -36,9 +35,15 @@ const App = () => {
     ])
     const [selectedCapital, setSelectedCapital] = useState({ capital: 'the Kangaroo', iso: 'AU' })
     const [correctCountries, setCorrectCountries] = useState([])
+    const [inCorrectCountries, setInCorrectCountries] = useState([])
     const [answer, setAnswer] = useState("")
     const [question, setQuestion] = useState(`Click the Country where the National Animal is ${selectedCapital.capital}...`)
 
+    // const resultsPage = () => {
+    //     if ( capitals === [] ) {
+
+    //     }
+    // }
 
     const setNewQuestion = () => {
         let question = `Click the Country where the National Animal is ${selectedCapital.capital}...`
@@ -47,6 +52,10 @@ const App = () => {
     const onClick = () => {
         setNewQuestion()
         setAnswer("")
+        if ( capitals === [] ) {
+            console.log("working")
+        } 
+
     }
     const newQuestion = () => {
         let capital = capitals[Math.floor(Math.random() * capitals.length)];
@@ -89,12 +98,17 @@ const App = () => {
             setCorrectCountries(country)
             newQuestion()
             console.log("Correct")
-            setAnswer("Correct")
+            setAnswer(`Woohoo! ${country.countryName} is Correct`)
         } else {
             console.log("Try Again")
-            setAnswer("Try Again")
+            newQuestion()
+            setAnswer(`Nope. Sorry not ${country.countryName}!`)
+            setInCorrectCountries(country)
         }
     }
+
+    console.log(correctCountries)
+    console.log(inCorrectCountries)
 
     // label
     // const createTextLabels = (width: number) => {
