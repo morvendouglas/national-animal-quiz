@@ -4,7 +4,6 @@ import './App.css';
 
 const App = () => {
 
-    // state
     const [countries, setCountries] = useState([])
     const [selectedCountry, setSelectedCountry] = useState([])
     const fetchAllCountries = () => {
@@ -23,7 +22,6 @@ const App = () => {
     })
 
     const [capitals, setCapitals] = useState([
-
         { capital: 'the Beaver', iso: 'CA' },
         { capital: 'the Snow Monkey', iso: 'JP' },
         { capital: 'the Gallic Rooster', iso: 'FR' },
@@ -38,12 +36,6 @@ const App = () => {
     const [inCorrectCountries, setInCorrectCountries] = useState([])
     const [answer, setAnswer] = useState("")
     const [question, setQuestion] = useState(`Click the Country where the National Animal is ${selectedCapital.capital}...`)
-
-    // const resultsPage = () => {
-    //     if ( capitals === [] ) {
-
-    //     }
-    // }
 
     const setNewQuestion = () => {
         let question = `Click the Country where the National Animal is ${selectedCapital.capital}...`
@@ -62,29 +54,6 @@ const App = () => {
         setSelectedCapital(capital)
     }
 
-    // styling
-    const stylingFunction = ({
-        countryValue,
-        countryCode,
-        minValue,
-        maxValue,
-        color,
-    }: CountryContext) => {
-        const opacityLevel = countryValue
-            ? 0.1 + (1.5 * (countryValue - minValue)) / (maxValue - minValue)
-            : 0;
-        return {
-            fill: countryCode === countryCode ? '#3d5c3e' : color,
-            //   fillOpacity: opacityLevel,
-            stroke: 'white',
-            strokeWidth: 2,
-            strokeOpacity: 0.2,
-            cursor: 'pointer',
-        };
-    };
-
-
-    //  clicking on country to answer
     const clickAction = (country) => {
         console.log(country.countryCode)
         console.log(selectedCapital.iso)
@@ -107,23 +76,6 @@ const App = () => {
         }
     }
 
-    console.log(correctCountries)
-    console.log(inCorrectCountries)
-
-    // label
-    // const createTextLabels = (width: number) => {
-    //     const labels: ({label: string} & ComponentProps<'text'>)[] = [
-    //       {label: 'double-click', x: 0.083 * width, y: 0.48 * width},
-    //     ];
-    //     if (width < 550) {
-    //       labels.forEach((label) => {
-    //         label.style = {...label.style, fontSize: '70%'};
-    //       });
-    //     }
-    //     return labels;
-    //   };
-
-    // rendered on page
     return (
         <div className="App">
         <h1>National Animals Quiz</h1>
@@ -134,8 +86,6 @@ const App = () => {
                 onClickFunction={clickAction}
                 size='responsive'
                 richInteraction
-                styleFunction={stylingFunction}
-                // textLabelFunction={createTextLabels}
             />
             <h2>{question} <button onClick={onClick}>&rarr;</button></h2>
             <h2>{answer}</h2>
