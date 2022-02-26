@@ -25,7 +25,7 @@ const App = () => {
         { capital: 'the Beaver', iso: 'CA' },
         { capital: 'the Snow Monkey', iso: 'JP' },
         { capital: 'the Gallic Rooster', iso: 'FR' },
-        { capital: ' the Golden Eagle', iso: 'MX' },
+        { capital: 'the Golden Eagle', iso: 'MX' },
         { capital: 'the Gray Wolf', iso: 'TR' },
         { capital: 'the Kiwi', iso: 'NZ' },
         { capital: 'the Brown Bear', iso: 'RU' },
